@@ -1,0 +1,9 @@
+.link{
+    margin-right: 10px;
+}
+.container
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
