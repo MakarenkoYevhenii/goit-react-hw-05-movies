@@ -1,14 +1,15 @@
 import {  useState } from "react";
-import { getFilmSearch } from "shared/services/getMovie";
-import { Link,useLocation,
-    useNavigate, } from 'react-router-dom';
+import { getFilmSearch } from "shared/services/getMovies";
+import { Link,
+    useNavigate, useParams,} from 'react-router-dom';
+
+  
+
 const FilmSearch = () => {
+  const {id}=useParams();
     const [value,setValue]=useState("")
     const [movies,setMovies]=useState([])
-    const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from || '/';
-  const goBack = () => navigate(from);
     const handleChange=({target})=>{
         setValue(target.value)
     }
@@ -20,7 +21,6 @@ const FilmSearch = () => {
         e.preventDefault()
            fetchMovies()
     }
-console.log(movies);
     const moviesList=movies.map(item=>{
         return(
             <li key={item.id}>
@@ -31,13 +31,13 @@ console.log(movies);
   return (
       <>
       <div>
-      <button onClick={goBack}>goBack</button>
       </div>
     <form>
       <label>
-        <input type="text" name="name" onChange={handleChange} />
+       <input type="text" name="name" onChange={handleChange} ></input>
       </label>
       <button onClick={handleSumbmit} type="submit" value="Отправить">search</button>
+     
     </form>
     <div>
     <ul>

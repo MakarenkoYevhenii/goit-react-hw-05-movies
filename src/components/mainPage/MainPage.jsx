@@ -1,4 +1,4 @@
-import { trendsMovie } from '../../shared/services/getMovie';
+import { trendsMovie } from '../../shared/services/getMovies';
 import { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import style from './mainPage.module.css'
@@ -14,7 +14,7 @@ const TrendsMovie=()=>{
         const fetchPosts = async ()=> {
             try {
                 const newData = await trendsMovie();
-                setData(prevState => {
+                setData(() => {
                     return {
                         posts: newData.results,
                         loading: false,
@@ -36,7 +36,7 @@ const TrendsMovie=()=>{
     }, []);
     const filmName=data.posts.map(item=>{
         return <li key={item.id} className={style.link__item}>
-        <Link to={`film/${item.id}`} className={style.link}>{item.original_title}</Link>
+        <Link to={`movies/${item.id}`} className={style.link}>{item.original_title}</Link>
         </li> 
     })
     return(
