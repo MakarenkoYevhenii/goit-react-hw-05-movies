@@ -1,34 +1,46 @@
-import {  useState } from "react";
+import {  useState,useEffect } from "react";
 import { getFilmSearch } from "shared/services/getMovies";
-import { Link,
-    useNavigate, useParams,} from 'react-router-dom';
+import { Link, useParams,useSearchParams} from 'react-router-dom';
+    import style from './filmSearch.module.css'
 
   
 
 const FilmSearch = () => {
-  const {id}=useParams();
-    const [value,setValue]=useState("")
+    const [value,setValue]=useState(" ")
     const [movies,setMovies]=useState([])
-  const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const searchQuery = searchParams.get('name');
+    console.log(searchQuery);
     const handleChange=({target})=>{
         setValue(target.value)
     }
-    const fetchMovies=async()=>{
-        const moviesSearchResult= await getFilmSearch(value)
+    useEffect(()=>{
+      const fetchMovies=async()=>{
+        const moviesSearchResult= await getFilmSearch(searchQuery)
         setMovies(moviesSearchResult.results)
      }
-    const handleSumbmit=(e)=>{
-        e.preventDefault()
-           fetchMovies()
+    if(Boolean(searchQuery)){
+      return fetchMovies()
     }
+    },[searchQuery])
+  
+     
     const moviesList=movies.map(item=>{
         return(
-            <li key={item.id}>
-               <Link to={`${item.id}`}>{item.original_title}</Link>
+            <li key={item.id} className={style.link_bam}>
+               <Link to={`${item.id}`} className={style.link_bam}>
+                 
+                 <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}width="400px"></img>
+                 <p>{item.original_title}</p>
+               </Link>
             </li>
         )
     })
+
+
   return (
+    
       <>
       <div>
       </div>
@@ -36,11 +48,10 @@ const FilmSearch = () => {
       <label>
        <input type="text" name="name" onChange={handleChange} ></input>
       </label>
-      <button onClick={handleSumbmit} type="submit" value="Отправить">search</button>
-     
+      <button className={style.buttonlink}>search</button>
     </form>
     <div>
-    <ul>
+    <ul className={style.filmList}>
         {moviesList}
     </ul>
     </div>

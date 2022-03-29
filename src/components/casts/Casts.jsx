@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCasts } from "shared/services/getMovies";
-
-
+import style from "../casts/casts.module.css"
 const CastsOfFilm=()=>{
     const {id}=useParams();
     const [casts,setCasts]=useState([]);
@@ -16,13 +15,13 @@ const CastsOfFilm=()=>{
      },[id])
     const humansCasts=casts.map(item=>{
         return( 
-        <li key={item.id}>
-        <img src={`https://image.tmdb.org/t/p/original/${item.profile_path}`} alt={item.character} width="100px" />{item.name}</li>
+        <li key={item.id} className={style.humans}>
+         <p>{item.name}</p><img src={`https://image.tmdb.org/t/p/original/${item.profile_path}`} alt={item.character} width="200px" /></li>
         )
     })
-    return(<ol>
+    return(<ul className={style.castList}>
         {humansCasts}
-    </ol>)
+    </ul>)
 }
 
 export default CastsOfFilm
