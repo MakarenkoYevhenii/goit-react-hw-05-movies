@@ -8,8 +8,13 @@ const CastsOfFilm=()=>{
     
     useEffect(()=>{
         const fetchCasts=async()=>{
-            const singleMovie= await getCasts(id)
-            setCasts(singleMovie.cast)
+            try {
+                const singleMovie= await getCasts(id)
+                setCasts(singleMovie.cast)
+            } catch (error) {
+                
+            }
+           
          }
          fetchCasts()
      },[id])

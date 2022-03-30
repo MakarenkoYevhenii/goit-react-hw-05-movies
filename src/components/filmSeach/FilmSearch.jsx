@@ -17,8 +17,13 @@ const FilmSearch = () => {
     }
     useEffect(()=>{
       const fetchMovies=async()=>{
-        const moviesSearchResult= await getFilmSearch(searchQuery)
+        try {
+          const moviesSearchResult= await getFilmSearch(searchQuery)
         setMovies(moviesSearchResult.results)
+        } catch (error) {
+          
+        }
+        
      }
     if(Boolean(searchQuery)){
       return fetchMovies()

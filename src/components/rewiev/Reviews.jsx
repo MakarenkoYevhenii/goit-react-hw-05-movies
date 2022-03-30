@@ -7,8 +7,13 @@ const RewiewOfFilm=()=>{
     const [rewiew,setRewiew]=useState([])
     useEffect(()=>{
         const fetchRewiew=async()=>{
-            const review= await getReview(id)
+            try {
+                const review= await getReview(id)
             setRewiew(review.results)
+            } catch (error) {
+                return "please try again later"
+            }
+            
         }   
         fetchRewiew()
     },[id])

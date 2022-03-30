@@ -19,14 +19,16 @@ const SingelFilmPage = () => {
   console.log(navigate);
   useEffect(() => {
     const fetchFilm = async () => {
-      const singleMovie = await getMovie(id);
-      setFilm(singleMovie);
-      setGenres(
-        singleMovie.genres.map(item => {
-          return item.name;
-        })
-      );
-    };
+      try {
+        const singleMovie = await getMovie(id);
+        setFilm(singleMovie);
+        setGenres(
+          singleMovie.genres.map(item => {
+            return item.name;
+          })
+        );
+      } catch(err){}
+    }
     fetchFilm();
   }, [id]);
   const listGenres=genres.map(item=>{
@@ -36,17 +38,18 @@ const SingelFilmPage = () => {
   })
   return (
     <>
-          {location.pathname==="/"?"":<button onClick={goBack}>Go back</button>}
+         
           <div className={style.film_detail}>
       <img
         src={`https://image.tmdb.org/t/p/original/${film.poster_path}`}
         alt=""
         width="400px"
+        className={style.poster}
       />
       <div className={style.film_description}>
       <h2>{film.original_title}</h2>
       <p>{film.overview}</p>
-      <ul><h2>Genres:</h2>
+      <ul className={style.genresList}><h2>Genres:</h2>
       {listGenres}</ul></div>
       </div>
       <div className={style.container}>
@@ -54,6 +57,7 @@ const SingelFilmPage = () => {
       <Link to="reviews" className={style.link}>reviev</Link>
       </div>
       <Outlet />
+      {location.pathname==="/"?"":<button onClick={goBack}>Go back</button>}
     </>
   );
 };
