@@ -8,11 +8,11 @@ import { Route, Routes } from 'react-router-dom';
 import { Suspense,lazy} from 'react';
 
 const Casts = lazy(() => import("./casts/Casts"));
-const Review = lazy(() => import("./rewiev/Reviews"));
-const FilmSearch = lazy(() => import("./filmSeach/FilmSearch"));
-const HeaderMenu = lazy(() => import("./headerMenu/HeaderMenu"));
-const SingleFilmPage = lazy(() => import("./singelFilmPage/SingleFilmPage"));
-const MainPage = lazy(() => import("./mainPage/MainPage"));
+const Review = lazy(() => import("./rewiev/Review"));
+const FilmSearch = lazy(() => import("../pages/moviesSearch/MoviesSearch"));
+const HeaderMenu = lazy(() => import("../pages/headerPage/HeaderPage"));
+const SingleFilmPage = lazy(() => import("../pages/singleFilm/SingleFilm"));
+const MainPage = lazy(() => import("../pages/homePage/HomePage"));
 
 export const App = () => {
   return (

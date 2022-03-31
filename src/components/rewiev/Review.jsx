@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getReview } from "shared/services/getMovies"
-import style from "./reviews.module.css"
+import style from "./review.module.css"
 const RewiewOfFilm=()=>{
     const {id}=useParams();
     const [rewiew,setRewiew]=useState([])
