@@ -1,4 +1,4 @@
-import FilmSearch from "components/mainPage/MainPage";
+import FilmSearch from "components/MainPage/MainPage";
 
 
 const HomePage = () => {

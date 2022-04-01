@@ -11,3 +11,12 @@
     display: block;
     text-align: center;
 }
+.navi_items{
+    text-decoration: none;
+    list-style-type: none;
+}
+.list_Navi
+{
+    display: flex;
+    justify-content: center;
+}

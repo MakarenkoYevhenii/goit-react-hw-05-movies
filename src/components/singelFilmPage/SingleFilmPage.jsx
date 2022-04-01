@@ -12,9 +12,9 @@ import style from './SingleFilmPage.module.css';
 const SingelFilmPage = () => {
   const [film, setFilm] = useState({
     film: [],
+    genres:[],
     error: null,
   });
-  const [genres, setGenres] = useState([]);
   const { id } = useParams();
 
   const navigate = useNavigate();
@@ -26,12 +26,14 @@ const SingelFilmPage = () => {
     const fetchFilm = async () => {
       try {
         const singleMovie = await getMovie(id);
-        setFilm(singleMovie);
-        setGenres(
-          singleMovie.genres.map(item => {
-            return item.name;
-          })
-        );
+        setFilm(prevState=>{
+          return{
+            ...prevState,
+            film:singleMovie,
+            genres: singleMovie.genres
+          }
+        });
+        
       } catch (err) {
         setFilm(prevState => {
           return {
@@ -43,27 +45,27 @@ const SingelFilmPage = () => {
     };
     fetchFilm();
   }, [id]);
-  const listGenres = genres.map(item => {
-    return <li key={item}>{item}</li>;
-  });
-console.log(film.error);
+  const genres=film.genres.map(item=>{
+    return <li key={item.name}>{item.name}</li>
+  })
+  
   return (
     
     <>
       {film.error && <p>Что-то пошло не так</p>}
       <div className={style.film_detail}>
         <img
-          src={`https://image.tmdb.org/t/p/original/${film.poster_path}`}
+          src={`https://image.tmdb.org/t/p/original/${film.film.poster_path}`}
           alt=""
           width="400px"
           className={style.poster}
         />
         <div className={style.film_description}>
-          <h2>{film.original_title}</h2>
-          <p>{film.overview}</p>
+          <h2>{film.film.original_title}</h2>
+          <p>{film.film.overview}</p>
           <ul className={style.genresList}>
             <h2>Genres:</h2>
-            {listGenres}
+            {genres}
           </ul>
         </div>
       </div>

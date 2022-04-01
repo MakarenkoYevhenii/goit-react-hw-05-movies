@@ -1,17 +1,23 @@
 import { Link, Outlet, } from 'react-router-dom';
 import style from '../headerMenu/headerMenu.module.css';
+import {items} from "./items"
+
 
 const HeaderMenu = () => {
- 
+
+  const headerName=items.map(items=>{
+   return( <li key={items.id} className={style.navi_items}>
+    <Link to={items.to}className={style.link} >{items.text}</Link>
+    </li>)
+  })
+  console.log(headerName);
   return (
     <div className={style.container}>
-      
-      <Link to="/" className={style.link}>
-        Home
-      </Link>
-      <Link to="movies" className={style.link}>movie</Link>
+      <ul className={style.list_Navi}>
+      {headerName}
+    
+      </ul>
       <Outlet />
-     
     </div>
   );
 };

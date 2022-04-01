@@ -1,4 +1,4 @@
-import FilmSearch from "components/filmSeach/FilmSearch";
+import FilmSearch from "components/FilmSeach/FilmSearch";
 
 
 const MoviesSearch = () => {
