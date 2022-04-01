@@ -1,9 +1,8 @@
 import {  useState,useEffect } from "react";
 import { getFilmSearch } from "shared/services/getMovies";
 import { Link, useLocation,useSearchParams} from 'react-router-dom';
-    import style from './FilmSearchPages.module.css'
+    import style from '../../components/FilmSeach/filmSearch.module.css'
 
-  
 
 const FilmSearch = () => {
     const [setValue]=useState(" ")
