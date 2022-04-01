@@ -1,7 +1,7 @@
 import {  useState,useEffect } from "react";
 import { getFilmSearch } from "shared/services/getMovies";
 import { Link, useLocation,useSearchParams} from 'react-router-dom';
-    import style from './filmSearch.module.css'
+    import style from './FilmSearchPages.module.css'
 
   
 
