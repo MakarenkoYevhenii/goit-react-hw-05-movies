@@ -1,6 +1,6 @@
 import { trendsMovie } from '../../shared/services/getMovies';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import style from './mainPage.module.css';
 
 const TrendsMovie = () => {
@@ -9,7 +9,7 @@ const TrendsMovie = () => {
     loading: false,
     error: null,
   });
-
+  const location=useLocation()
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -34,10 +34,9 @@ const TrendsMovie = () => {
     fetchPosts();
   }, []);
   const filmName = data.posts.map(item => {
-    console.log(item);
     return (
       <li key={item.id} className={style.link__item}>
-        <Link to={`movies/${item.id}`} className={style.link}>
+        <Link to={`movies/${item.id}`} className={style.link} state={{from: location}}>
           <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}width="400px"></img>
           <p>{item.original_title}</p>
         </Link>

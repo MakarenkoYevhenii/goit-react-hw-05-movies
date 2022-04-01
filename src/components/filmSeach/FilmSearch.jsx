@@ -1,6 +1,6 @@
 import {  useState,useEffect } from "react";
 import { getFilmSearch } from "shared/services/getMovies";
-import { Link, useParams,useSearchParams} from 'react-router-dom';
+import { Link, useLocation, useParams,useSearchParams} from 'react-router-dom';
     import style from './filmSearch.module.css'
 
   
@@ -11,6 +11,7 @@ const FilmSearch = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const searchQuery = searchParams.get('name');
+    const location =useLocation()
     console.log(searchQuery);
     const handleChange=({target})=>{
         setValue(target.value)
@@ -34,7 +35,7 @@ const FilmSearch = () => {
     const moviesList=movies.map(item=>{
         return(
             <li key={item.id} className={style.link_bam}>
-               <Link to={`${item.id}`} className={style.link_bam}>
+               <Link to={`${item.id}`} className={style.link_bam} state={{from: location}}>
                  
                  <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}width="400px"></img>
                  <p>{item.original_title}</p>

@@ -1,22 +1,27 @@
-import { useEffect, useState,} from 'react';
+import { useEffect, useState } from 'react';
 import {
   useParams,
   Link,
-  Outlet,useLocation ,useNavigate
+  Outlet,
+  useNavigate,
+  useLocation,
 } from 'react-router-dom';
 import { getMovie } from '../../shared/services/getMovies';
-import style from "./SingleFilmPage.module.css"
+import style from './SingleFilmPage.module.css';
 
 const SingelFilmPage = () => {
-  const [film, setFilm] = useState([]);
+  const [film, setFilm] = useState({
+    film: [],
+    error: null,
+  });
   const [genres, setGenres] = useState([]);
   const { id } = useParams();
 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from || "/";
-  const goBack = ()=> navigate(from);
-  console.log(navigate);
+  const from = location.state?.from || '/';
+  const goBack = () => navigate(from);
+
   useEffect(() => {
     const fetchFilm = async () => {
       try {
@@ -27,37 +32,55 @@ const SingelFilmPage = () => {
             return item.name;
           })
         );
-      } catch(err){}
-    }
+      } catch (err) {
+        setFilm(prevState => {
+          return {
+            ...prevState,
+            error: err.message,
+          };
+        });
+      }
+    };
     fetchFilm();
   }, [id]);
-  const listGenres=genres.map(item=>{
-    return (
-      <li key={item}>{item}</li>
-    )
-  })
+  const listGenres = genres.map(item => {
+    return <li key={item}>{item}</li>;
+  });
+console.log(film.error);
   return (
+    
     <>
-         
-          <div className={style.film_detail}>
-      <img
-        src={`https://image.tmdb.org/t/p/original/${film.poster_path}`}
-        alt=""
-        width="400px"
-        className={style.poster}
-      />
-      <div className={style.film_description}>
-      <h2>{film.original_title}</h2>
-      <p>{film.overview}</p>
-      <ul className={style.genresList}><h2>Genres:</h2>
-      {listGenres}</ul></div>
+      {film.error && <p>Что-то пошло не так</p>}
+      <div className={style.film_detail}>
+        <img
+          src={`https://image.tmdb.org/t/p/original/${film.poster_path}`}
+          alt=""
+          width="400px"
+          className={style.poster}
+        />
+        <div className={style.film_description}>
+          <h2>{film.original_title}</h2>
+          <p>{film.overview}</p>
+          <ul className={style.genresList}>
+            <h2>Genres:</h2>
+            {listGenres}
+          </ul>
+        </div>
       </div>
       <div className={style.container}>
-      <Link to="cast" className={style.link}>cast</Link>
-      <Link to="reviews" className={style.link}>reviev</Link>
+        <Link to="cast" className={style.link}>
+          cast
+        </Link>
+        <Link to="reviews" className={style.link}>
+          reviev
+        </Link>
       </div>
       <Outlet />
-      {location.pathname==="/"?"":<button onClick={goBack}>Go back</button>}
+      {location.pathname === '/' ? (
+        ''
+      ) : (
+        <button onClick={goBack}>Go back</button>
+      )}
     </>
   );
 };
