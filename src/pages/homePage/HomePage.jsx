@@ -1,10 +1,10 @@
-import FilmSearch from "components/MainPage/MainPage";
+import MainPage from "components/MainPage/MainPage";
 
 
 const HomePage = () => {
     return(
         <>
-        <FilmSearch />
+        <MainPage />
         </>
     )
 }
