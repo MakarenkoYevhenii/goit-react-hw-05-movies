@@ -1,9 +1,4 @@
-// import MainPage from './mainPage/MainPage';
-// import SingleFilmPage from './singelFilmPage/SingleFilmPage';
-// import CastsOfFilm from './casts/Casts';
-// import Review from './rewiev/Reviews'
-// import FilmSearch from './filmSeach/FilmSearch'
-// import HeaderMenu from './headerMenu/HeaderMenu';
+
 import { Route, Routes } from 'react-router-dom';
 import { Suspense,lazy} from 'react';
 
