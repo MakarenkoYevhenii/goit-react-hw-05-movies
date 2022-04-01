@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/176.92909f5c.chunk.css","mappings":"AAAA,oBACI,qBAAsB,CAEtB,oBAAqB,CADrB,iBAEJ","sources":["components/rewiev/review.module.css"],"sourcesContent":[".post{\n    border: 2px solid #666; \n    margin-bottom: 5px;\n    list-style-type: none;\n}"],"names":[],"sourceRoot":""}
