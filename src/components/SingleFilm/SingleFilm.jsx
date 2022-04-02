@@ -7,7 +7,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { getMovie } from '../../shared/services/getMovies';
-import style from './SingleFilmPage.module.css';
+import style from "../SingleFilm/SingleFilm.module.css"
 
 const SingelFilmPage = () => {
   const [film, setFilm] = useState({

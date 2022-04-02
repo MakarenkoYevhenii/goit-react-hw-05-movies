@@ -1,4 +1,4 @@
-import MovieDetail from "components/singelFilmPage/SingleFilmPage";
+import MovieDetail from "../../components/SingleFilm/SingleFilm";
 
 
 const HomePage = () => {
