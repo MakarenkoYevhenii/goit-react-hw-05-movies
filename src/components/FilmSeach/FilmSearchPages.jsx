@@ -1,7 +1,7 @@
 import {  useState,useEffect } from "react";
 import { getFilmSearch } from "shared/services/getMovies";
 import { Link, useLocation,useSearchParams} from 'react-router-dom';
-    // import style from '../../components/FilmSeach/filmSearch.module.css'
+    import style from '../../components/FilmSeach/filmSearch.module.css'
 
 
 const FilmSearch = () => {
@@ -33,8 +33,8 @@ const FilmSearch = () => {
      
     const moviesList=movies.map(item=>{
         return(
-            <li key={item.id} className={"style.link_bam"}>
-               <Link to={`${item.id}`} className={"style.link_bam"} state={{from: location}}>
+            <li key={item.id} className={style.link_bam}>
+               <Link to={`${item.id}`} className={style.link_bam} state={{from: location}}>
                  
                  <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}width="400px" alt={item.overview}></img>
                  <p>{item.original_title}</p>
@@ -53,10 +53,10 @@ const FilmSearch = () => {
       <label>
        <input type="text" name="name" onChange={handleChange} ></input>
       </label>
-      <button className={"style.buttonlink"}>search</button>
+      <button className={style.buttonlink}>search</button>
     </form>
     <div>
-    <ul className={"style.filmList"}>
+    <ul className={style.filmList}>
         {moviesList}
     </ul>
     </div>

@@ -7,14 +7,14 @@ const Review = lazy(() => import("./rewiev/Review"));
 const FilmSearch = lazy(() => import("../pages/moviesSearch/MoviesSearchPage"));
 const HeaderMenu = lazy(() => import("../pages/headerPage/HeaderPage"));
 const SingleFilmPage = lazy(() => import("../pages/singleFilm/SingleFilmPage"));
-const MainPage = lazy(() => import("../components/MainPage/MainPage"));
+// const MainPage = lazy(() => import("../components/MainPage/MainPage"));
 
 export const App = () => {
   return (
     <Suspense fallback={<p>...Loading</p>}>
       <Routes>
         <Route path='/' element={<HeaderMenu/>}>
-        <Route index element={<MainPage />}/>
+        {/* <Route index element={<MainPage />}/> */}
         <Route path="movies" element={<FilmSearch/>}/>
         <Route path="movies/:id/" element={<SingleFilmPage />}>
           <Route path="cast" element={<Casts/>} />
