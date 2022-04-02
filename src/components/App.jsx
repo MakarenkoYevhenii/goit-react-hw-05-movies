@@ -7,7 +7,7 @@ const Review = lazy(() => import("./rewiev/Review"));
 const FilmSearch = lazy(() => import("../pages/moviesSearch/MoviesSearchPage"));
 const HeaderMenu = lazy(() => import("../pages/headerPage/HeaderPage"));
 const SingleFilmPage = lazy(() => import("../pages/singleFilm/SingleFilmPage"));
-const MainPage = lazy(() => import("./MainPage/MainPage"));
+const MainPage = lazy(() => import("./MainPage/MainPage.jsx"));
 
 export const App = () => {
   return (
