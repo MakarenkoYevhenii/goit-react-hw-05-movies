@@ -10,10 +10,8 @@ ReactDOM.render(
   <React.StrictMode>
     
     <BrowserRouter basename="/">
-    <Suspense fallback={<div>Loading...</div>}>
-
     <App />
-    </Suspense>
+
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
