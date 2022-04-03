@@ -1,12 +1,12 @@
-import MainPage from "../../components/TrendingFilms/TrendingFilms";
+import TrendingFilms from "../../components/TrendingFilms/TrendingFilms";
 
 
-const Main = () => {
+const MainPage = () => {
     return(
         <>
-        <MainPage />
+        <TrendingFilms />
         </>
     )
 }
 
-export default Main
+export default MainPage
