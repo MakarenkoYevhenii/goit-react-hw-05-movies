@@ -1,4 +1,4 @@
-import { trendsMovie } from '../../shared/services/getMovies';
+import { trendsMovie } from '../../shared/services/Movies';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import style from '../TrendingFilms/TrendingFilms.module.css';

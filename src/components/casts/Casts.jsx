@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getCasts } from "shared/services/getMovies";
+import { getCasts } from "shared/services/Movies";
 import style from "../casts/casts.module.css"
 const CastsOfFilm=()=>{
     const {id}=useParams();

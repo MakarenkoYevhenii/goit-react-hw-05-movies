@@ -6,7 +6,7 @@ import {
   useNavigate,
   useLocation,
 } from 'react-router-dom';
-import { getMovie } from '../../shared/services/getMovies';
+import { getMovie } from '../../shared/services/Movies';
 import style from "../SingleFilm/SingleFilm.module.css"
 
 const SingelFilmPage = () => {

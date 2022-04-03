@@ -1,5 +1,5 @@
 import {  useState,useEffect } from "react";
-import { getFilmSearch } from "shared/services/getMovies";
+import { getFilmSearch } from "shared/services/Movies";
 import { Link, useLocation,useSearchParams} from 'react-router-dom';
     import style from '../../components/FilmSeach/filmSearch.module.css'
 

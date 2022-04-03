@@ -8,8 +8,7 @@ const instanse = axios.create({
 });
 
 export async function trendsMovie() {
-  const { data } = await instanse.get('/trending/movie/week'
-  )
+  const { data } = await instanse.get('/trending/movie/week')
   return data;}
 // https://api.themoviedb.org/3/trending/movie/week?api_key=4fbe7a50ce1a6bc10e341cdef41a29ce
 
